@@ -12,7 +12,7 @@ class Account < ApplicationRecord
     Account.where.not(name: 'cash')
   end
 
-  def deposit(amount)
+  def deposit_for(amount)
     Account.transaction do
       deposits.create!(amount: amount)
       ledger_entries.debit.create!(account: Account.cash, amount: amount)

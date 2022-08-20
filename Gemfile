@@ -75,4 +75,4 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "sidekiq", "~> 6.5"
+gem 'sidekiq', '~> 6.5'

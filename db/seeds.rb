@@ -9,7 +9,7 @@ end
 def initialize_the_balances
   accounts = Account.publics.each do |account|
     random_amount = (100_000..1_000_000).to_a.sample
-    account.deposit(random_amount)
+    account.deposit_for(random_amount)
   end
 end
 
