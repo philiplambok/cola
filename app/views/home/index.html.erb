@@ -1,10 +1,5 @@
 <div class="row">
   <div class="col-md-6 m-auto">
-    <div class="text-end">
-      <span class="fw-bold d-block">Cash balance</span>
-      <span><%= to_idr Account.cash.balance.abs %></span>
-    </div>
-    <hr>
     <table class="table ta">
       <thead>
         <tr>
@@ -25,5 +20,23 @@
         </tr>
       </tbody>
     </table>
+
+    <table class="table table-bordered">
+      <tr>
+        <th colspan="2" class="text-center">Reports</th>
+      </tr>
+      <tr>
+        <th>Cash balance</th>
+        <td class="text-end"><%= to_idr Account.cash.balance.abs %></td>
+      </tr>
+      <tr>
+        <th>Reconciled?</th>
+        <td class="text-end"><%= @accounts.sum(&:balance).abs == Account.cash.balance.abs ? 'Ok' : 'No' %></td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <%= link_to 'Add more 1000 concurrents deposits', '#', class: 'btn btn-link m-0 p-0'  %>
   </div>
 </div>
