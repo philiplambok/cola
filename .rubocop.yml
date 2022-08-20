@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 3.0.1
+  NewCops: enable
+  Exclude:
+    - db/*
+    - node_modules/**/*
+    - vendor/**/*
+    - db/migrate/**/*
+    - bin/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 200
+  Exclude:
+    - spec/**/*.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - spec/**/*.rb
+    - app/admin/*.rb
+
+Lint/MissingSuper:
+  Enabled: false
