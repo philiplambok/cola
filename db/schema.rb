@@ -10,8 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_20_072547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "balance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_deposits_on_account_id"
+  end
+
+  create_table "ledger_entries", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.integer "entry_type"
+    t.bigint "entryable_id"
+    t.string "entryable_type"
+    t.bigint "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_ledger_entries_on_account_id"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.bigint "amount"
+    t.bigint "from_account_id"
+    t.bigint "to_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "deposits", "accounts"
+  add_foreign_key "ledger_entries", "accounts"
 end

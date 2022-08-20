@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  entry_type: 1
+  entryable_id: 
+  entryable_type: MyString
+  amount: 
+
+two:
+  account: two
+  entry_type: 1
+  entryable_id: 
+  entryable_type: MyString
+  amount: 

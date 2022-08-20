@@ -1,2 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Cola</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Accounts</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td><%= to_idr account.balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

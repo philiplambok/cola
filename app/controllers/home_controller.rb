@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    @accounts = Account.where.not(name: 'cash').order(id: :asc)
+  end
 end
