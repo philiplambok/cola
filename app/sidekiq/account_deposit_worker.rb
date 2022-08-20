@@ -1,5 +1,6 @@
 class AccountDepositWorker
   include Sidekiq::Worker
+  include Turbo::Broadcastable
 
   sidekiq_options retry: 0
 
