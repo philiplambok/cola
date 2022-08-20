@@ -33,10 +33,16 @@
         <th>Reconciled?</th>
         <td class="text-end"><%= @accounts.sum(&:balance).abs == Account.cash.balance.abs ? 'Ok' : 'No' %></td>
       </tr>
+      <tr>
+        <th>Is there any money lost?</th>
+        <td class="text-end"><%= @accounts.sum(&:balance).abs % 100499500 == 0 ? 'No' : 'Yes' %></td>
+      </tr>
     </table>
 
     <hr>
 
     <%= link_to 'Add more 10,000 concurrents deposits', randoms_path , class: 'btn btn-link m-0 p-0'  %>
+    <br>
+    <%= link_to 'Reset', resets_path , class: 'btn btn-link m-0 p-0'  %>
   </div>
 </div>

@@ -14,5 +14,5 @@ def initialize_the_balances
 end
 
 initialize_the_accounts
-initialize_the_balances
+# initialize_the_balances
 
