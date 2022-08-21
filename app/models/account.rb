@@ -13,7 +13,13 @@ class Account < ApplicationRecord
   end
 
   def sync_progress
+    if Sidekiq::Queue.new.size.positive?
+      broadcast_replace_to 'deposit', partial: 'home/reports_loading', target: 'reports'
+      broadcast_replace_to 'deposit', partial: 'home/accounts_loading', target: 'accounts'
+      return true
+    end
     broadcast_replace_to 'deposit', partial: 'home/reports', target: 'reports'
+    broadcast_replace_to 'deposit', partial: 'home/accounts', target: 'accounts'
   end
 
   def deposit_for(amount)

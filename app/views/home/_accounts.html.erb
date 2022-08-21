@@ -1,0 +1,22 @@
+<div id="accounts">
+  <table class="table my-4">
+    <thead>
+      <tr>
+        <th>Accounts</th>
+        <th class="text-end">Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Account.publics.each do |account| %>
+        <tr>
+          <td><%= link_to account.name, account_path(account) %></td>
+          <td class="text-end"><%= to_idr account.balance.abs %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td><span class="fw-bold">Total</span></td>
+        <td class="text-end"><%= to_idr Account.publics.sum(&:balance).abs %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
