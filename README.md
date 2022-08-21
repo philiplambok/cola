@@ -1,24 +1,42 @@
-# README
+# Cola
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Experiment project for building highly reliable finance application.
+ 
+Most inspired by big companies like Uber, Airbnb, Stripe, and Modern Treasury, how they handle concurrency transactions and write their accounting transactions.
+
+Currently, the project only has one feature: a deposit feature. The feature allows users to add funds to their digital wallet balances.
+
+The specs:
+- Ruby on Rails 7.
+- Redis. 
+- Sidekiq with 30 concurrences jobs.
+- PostgreSQL with 5 connection pools. 
+
+I tried to implement three possible handlers for that feature:
+- The correct way. 
+- The wrong way v1 (SQL locking)
+- The wrong way v2 (like option two, but without SQL locking)
+
+You can try the feature at this link.
 
 Things you may want to cover:
 
 * Ruby version
 
+  ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-darwin18]
+
 * System dependencies
+
+  Redis, and PostgreSQL
 
 * Configuration
 
+  None.
+
 * Database creation
+
+  rails db:create
 
 * Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  rails db:migrate && rails db:seed
