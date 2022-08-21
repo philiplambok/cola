@@ -26,6 +26,7 @@ Things you may want to cover:
   ruby 3.0.1p64 (2021-04-05 revision 0fb782ee38) [x86_64-darwin18]
 
 * System dependencies
+
   Redis, and PostgreSQL
 
 * Configuration
