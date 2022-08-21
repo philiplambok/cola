@@ -37,7 +37,10 @@
     </table>
 
     <% if Sidekiq::Queue.new.size > 0 %>
-      <p>Account updates still in progress</p>
+      <div class="d-flex align-items-center">
+        <strong>Updating the account balance please wait...</strong>
+        <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+      </div>
     <% else %>
       <table class="table my-4">
         <thead>

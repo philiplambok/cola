@@ -20,8 +20,8 @@ class Account < ApplicationRecord
     Account.cash.increment!(:balance, amount, touch: true)
     decrement!(:balance, amount, touch: true)
     deposit = deposits.create!(amount: amount)
-    ledger_entries.debit.create!(account: Account.cash, amount: amount, entryable: deposit)
-    ledger_entries.credit.create!(account: self, amount: amount, entryable: deposit)
+    LedgerEntry.create!(entry_type: :debit, account: Account.cash, amount: amount, entryable: deposit)
+    LedgerEntry.create!(entry_type: :credit, account: self, amount: amount, entryable: deposit)
     sync_progress
   end
 
@@ -29,8 +29,8 @@ class Account < ApplicationRecord
     cash = Account.cash
     cash.with_lock do
       deposit = deposits.create!(amount: amount)
-      ledger_entries.debit.create!(account: cash, amount: amount, entryable: deposit)
-      ledger_entries.credit.create!(account: self, amount: amount, entryable: deposit)
+      LedgerEntry.create!(entry_type: :debit, account: cash, amount: amount, entryable: deposit)
+      LedgerEntry.create!(entry_type: :credit, account: self, amount: amount, entryable: deposit)
 
       cash.balance += amount
       cash.save!
@@ -43,8 +43,8 @@ class Account < ApplicationRecord
   def deposit_for_without_locking(amount)
     cash = Account.cash
     deposit = deposits.create!(amount: amount)
-    ledger_entries.debit.create!(account: cash, amount: amount, entryable: deposit)
-    ledger_entries.credit.create!(account: self, amount: amount, entryable: deposit)
+    LedgerEntry.create!(entry_type: :debit, account: cash, amount: amount, entryable: deposit)
+    LedgerEntry.create!(entry_type: :credit, account: self, amount: amount, entryable: deposit)
 
     cash.balance += amount
     cash.save!
