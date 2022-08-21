@@ -49,7 +49,7 @@
         <tbody>
           <% Account.publics.each do |account| %>
             <tr>
-              <td><%= account.name %></td>
+              <td><%= link_to account.name, account_path(account) %></td>
               <td class="text-end"><%= to_idr account.balance.abs %></td>
             </tr>
           <% end %>

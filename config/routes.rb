@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :randoms, only: %i[index]
   resources :resets, only: %i[index]
+  resources :accounts, only: %i[show]
 
   root 'home#index'
 end

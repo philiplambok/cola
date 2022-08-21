@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 m-auto">
+    <h2><%= @account.name %></h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Entry type</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @account.ledger_entries.each do |entry| %>
+          <tr>
+            <td><%= entry.created_at %></td>
+            <td><%= entry.entryable_id %> | <%= entry.entryable_type %></td>
+            <td><%= entry.entry_type %></td>
+            <td><%= to_idr entry.amount %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td colspan="2"><span class="fw-bold">Total debit</span></td>
+          <td><span class="fw-bold"><%= to_idr @account.ledger_entries.debit.sum(&:amount).abs %></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><span class="fw-bold">Total credit</span></td>
+          <td><span class="fw-bold"><%= to_idr @account.ledger_entries.credit.sum(&:amount).abs %></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><span class="fw-bold">Current balance</span></td>
+          <td><span class="fw-bold"><%= to_idr @account.balance.abs %></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
