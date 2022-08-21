@@ -2,7 +2,7 @@
 
 Experiment project for building highly reliable finance application.
  
-Most inspired by big companies like Uber, Airbnb, Stripe, and Modern Treasury, how they handle concurrency transactions and write their accounting transactions.
+Most inspired by big companies like [Uber](https://www.uber.com/en-ID/blog/money-scale-strong-data/), [Airbnb](https://medium.com/airbnb-engineering/tracking-the-money-scaling-financial-reporting-at-airbnb-6d742b80f040), [Stripe](https://developer.squareup.com/blog/books-an-immutable-double-entry-accounting-database-service/), and [Modern Treasury](https://www.moderntreasury.com/), how they handle concurrency transactions and write their accounting transactions.
 
 Currently, the project only has one feature: a deposit feature. The feature allows users to add funds to their digital wallet balances.
 
