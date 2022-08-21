@@ -1,5 +1,0 @@
-<% if Sidekiq::Queue.new.size > 0 %>
-  <td id="reconcile" class="text-end">In progress, job size=<%= Sidekiq::Queue.new.size %></td>
-<% else %>
-  <td id='money_lost' class="text-end"><%= @accounts.sum(&:balance).abs % 100499500 == 0 ? 'No' : 'Yes' %></td>
-<% end %>

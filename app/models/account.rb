@@ -40,7 +40,6 @@ class Account < ApplicationRecord
     sync_progress
   end
 
-  # Public: The unreliable way to store the deposits (No locking)
   def deposit_for_without_locking(amount)
     cash = Account.cash
     deposit = deposits.create!(amount: amount)

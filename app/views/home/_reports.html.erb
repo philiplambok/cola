@@ -4,7 +4,7 @@
       <div>
         <%= link_to 'add more v1 (the correct way)', randoms_path(version: '1'), class: 'd-block' %>
         <%= link_to 'add more v2 (the sql locking way)', randoms_path(version: '2'), class: 'd-block' %>
-        <%= link_to 'add more v3 (the unreliable way)', randoms_path(version: '3'), class: 'd-block' %>
+        <%= link_to 'add more v3 (like v2 but without locking)', randoms_path(version: '3'), class: 'd-block' %>
       </div>
       <%= link_to 'Reset', resets_path , class: 'btn btn-link m-0 p-0'  %>
     </div>
